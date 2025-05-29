@@ -20,7 +20,10 @@ func (e *Executor) BuildTarget(targetName string) error {
 
 	if targetName == "all" {
 		for _, platform := range e.config.Build.Targets[targetName].Platforms {
-			e.BuildSingleTarget(platform)
+			err := e.BuildSingleTarget(platform)
+			if err != nil {
+				return err
+			}
 		}
 	} else {
 		return e.BuildSingleTarget(targetName)
