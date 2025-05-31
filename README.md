@@ -17,6 +17,31 @@ A flexible and powerful build automation tool for Go projects that simplifies th
 go get github.com/parashmaity/go-builder
 ```
 
+
+# Installation Options
+
+## Using go install (requires Go)
+```bash
+go install github.com/parashmaity/go-builder@latest
+```
+
+## From Pre-built Binaries
+
+1. Download the appropriate binary for your system from the [Releases page](https://github.com/parashmaity/go-builder/releases)
+2. Make it executable:
+   ```bash
+   chmod +x go-builder-*
+   ```
+3. Move it to your PATH:
+   ```bash
+   sudo mv go-builder-* /usr/local/bin/go-builder
+   ```
+
+## Verify Installation
+```bash
+go-builder --version
+```
+
 ## Quick Start
 
 1. Create a `build-config.yaml` in your project root:
