@@ -76,6 +76,21 @@ func (e *Executor) BuildSingleTarget(targetName string) error {
 		return fmt.Errorf("build failed: %w", err)
 	}
 
+	if e.config.Zip {
+		// rename the output file to include the version
+		if err := os.Rename(target.Output, fmt.Sprintf("%s/%s", filepath.Dir(target.Output), e.config.Project)); err != nil {
+			return fmt.Errorf("error renaming output file: %w", err)
+		}
+
+		cmd = exec.Command("zip", "-j", fmt.Sprintf("%s.zip", target.Output), fmt.Sprintf("%s/%s", filepath.Dir(target.Output), e.config.Project))
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		if err := cmd.Run(); err != nil {
+			return fmt.Errorf("error creating zip file: %w", err)
+		}
+		fmt.Printf("Output zipped to: %s\n", target.Output)
+		os.Remove(fmt.Sprintf("%s/%s", filepath.Dir(target.Output), e.config.Project))
+	}
 	fmt.Printf("Build successful: %s\n", target.Output)
 	return nil
 }

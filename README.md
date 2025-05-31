@@ -24,6 +24,7 @@ go get github.com/parashmaity/go-builder
 ```yaml
 project: "your-project"
 version: "1.0.0"
+zip: false
 
 build:
   default:
@@ -153,6 +154,7 @@ The builder supports the following platform combinations:
 # Project settings
 project: "example-project"
 version: "1.0.0"
+zip: false
 
 build:
   # Default build settings

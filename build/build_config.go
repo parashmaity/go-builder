@@ -13,6 +13,7 @@ import (
 type Config struct {
 	Project      string              `yaml:"project"`
 	Version      string              `yaml:"version"`
+	Zip          bool                `yaml:"zip"`
 	Build        BuildSettings       `yaml:"build"`
 	Dependencies DependencyConfig    `yaml:"dependencies"`
 	Tasks        map[string][]string `yaml:"tasks"`
