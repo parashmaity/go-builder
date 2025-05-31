@@ -24,7 +24,6 @@ go get github.com/parashmaity/go-builder
 ```yaml
 project: "your-project"
 version: "1.0.0"
-output-dir: "./bin"
 
 build:
   default:
@@ -150,7 +149,7 @@ The builder supports the following platform combinations:
 - Solaris: amd64
 
 ## Complete build-config.yaml
-```
+```yaml
 # Project settings
 project: "example-project"
 version: "1.0.0"
