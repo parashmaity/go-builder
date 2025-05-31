@@ -15,6 +15,12 @@ var BuildCmd = &cobra.Command{
 	Long: `Build the project for specific target or the default target if none is specified.
 		Available targets are defined in build-config.yml.`,
 	Run: func(cmd *cobra.Command, args []string) {
+
+		version, _ := cmd.Flags().GetBool("version")
+		if version {
+			fmt.Printf("go-builder\nVersion: %s\n", Version)
+			return
+		}
 		target := "default"
 		if targetFlag != "" {
 			target = targetFlag
@@ -47,4 +53,5 @@ var BuildCmd = &cobra.Command{
 func init() {
 	BuildCmd.PersistentFlags().StringVar(&cfgFile, "config", "build-config.yaml", "config file (default is build-config.yaml)")
 	BuildCmd.Flags().StringVar(&targetFlag, "target", "", "build target to use (default is 'default')")
+	BuildCmd.Flags().BoolP("version", "v", false, "display the version of the build tool")
 }

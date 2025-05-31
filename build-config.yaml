@@ -1,6 +1,6 @@
 # Project settings
-project: "example-project"
-version: "1.0.0"
+project: "go-builder"
+version: "v0.1.0"
 
 build:
   # Default build settings
